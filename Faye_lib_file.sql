@@ -104,9 +104,9 @@ insert into artist values(7, "Phil", "Collins", "English");
 insert into artist values(8, "Take That", "Take That", "English");
 insert into artist values(9, "Calvin", "Harris", "Scotish");
 
-insert into artist values(10, "The Stone Roses", "The Stone Roses");
-insert into artist values(11, "Rihanna", "Rihanna");
-insert into artist values(12, "Laura", "Marling");
+insert into artist values(10, "The Stone Roses", "The Stone Roses", "English");
+insert into artist values(11, "Rihanna", "Rihanna", "Barbadian");
+insert into artist values(12, "Laura", "Marling", "English");
 
 insert into album values(10, "All I Know So Far", 6, 1, 7, 2021);
 insert into album values(11, "Fun House", 6, 1, 8, 2008);
@@ -129,4 +129,5 @@ insert into customer values(10, "Lois", "Travis", "loistravis@gmail.com", "07620
 insert into customer values(11, "John", "Barnes", "jb@gmail.com", "07783888555", "5 The Row", "BL1 5LJ", "2022-06-21");
 insert into customer values(12, "Jenna", "Wade", "jennagirl@gmail.com", "07885101295", "15 Walton avenue", "TS5 7RN", "2023-01-21");
 insert into customer values(13, "Evelyn", "Boomer", "eve45@btconnect.com", "07234661660", "Rose Cottage", "HX6 1DG", "2023-01-30");
-insert into customer values(14, "Dave", "Glynn", "dglynn@yahoo.co.uk", "07885101295", "15 Walton avenue", "TS5 7RN", "2022-01-21")
+insert into customer values(14, "Dave", "Glynn", "dglynn@yahoo.co.uk", "07885101295", "15 Walton avenue", "TS5 7RN", "2022-01-21");
+
