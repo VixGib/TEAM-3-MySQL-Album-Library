@@ -131,3 +131,17 @@ insert into customer values(12, "Jenna", "Wade", "jennagirl@gmail.com", "0788510
 insert into customer values(13, "Evelyn", "Boomer", "eve45@btconnect.com", "07234661660", "Rose Cottage", "HX6 1DG", "2023-01-30");
 insert into customer values(14, "Dave", "Glynn", "dglynn@yahoo.co.uk", "07885101295", "15 Walton avenue", "TS5 7RN", "2022-01-21");
 
+insert into loan_procedure values(1, 1, 6, "2023-02-02", "2023-02-23");
+insert into loan_procedure values(2, 9, 8, "2023-02-03", "2023-02-24");
+insert into loan_procedure values(3, 14, 1, "2023-02-05", "2023-02-26");
+insert into loan_procedure values(4, 8, 6, "2023-02-07", "2023-02-28");
+insert into loan_procedure values(5, 9, 14, "2023-02-08", "2023-03-01");
+insert into loan_procedure values(6, 17, 14, "2023-02-09", "2023-03-02");
+insert into loan_procedure values(7, 2, 2, "2023-02-22", "2023-03-15");
+insert into loan_procedure values(8, 2, 7, "2023-02-22", "2023-03-15");
+insert into loan_procedure values(9, 8, 5, "2023-03-01", "2023-03-22");
+insert into loan_procedure values(10, 3, 3, "2023-03-05", "2023-03-26");
+insert into loan_procedure values(11, 16, 12, "2023-03-08", "2023-03-29");
+insert into loan_procedure values(12, 12, 11, "2023-03-10", "2023-03-31");
+insert into loan_procedure values(13, 11, 11, "2023-03-11", "2023-04-01");
+insert into loan_procedure values(14, 2, 9, "2023-03-13", "2023-04-03");
