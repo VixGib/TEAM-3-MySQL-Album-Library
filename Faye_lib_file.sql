@@ -11,11 +11,11 @@ nationality varchar(70));
 create table if not exists record_label(
 rec_id smallint not null primary key auto_increment,
 label_name varchar(70) not null);
-
+-- genre to albums, one to many
 create table if not exists genre(
 genre_id smallint not null primary key auto_increment,
 genre_name varchar(70) not null);
-
+-- artist to album, one to many; album to genre, one to many; album to record label, one to many;
 create table if not exists album(
 album_id smallint not null primary key auto_increment,
 album_name varchar(150) not null,
@@ -23,7 +23,7 @@ artist_id smallint not null, foreign key(artist_id) references artist(art_id),
 album_genre_id smallint not null, foreign key(album_genre_id) references genre(genre_id),
 record_label_id smallint, foreign key(record_label_id) references record_label(rec_id),
 album_year year(4) );
-
+-- customer to loan procedure, one to many; 
 create table if not exists customer(
 cust_id smallint not null primary key auto_increment,
 first_name varchar(70) not null,
@@ -33,7 +33,7 @@ mobile_num varchar(11),
 address varchar(150),
 postcode varchar(8),
 join_date date);
-
+-- loan procedure, one to many; 
 create table if not exists loan_procedure(
 loan_id smallint not null primary key auto_increment,
 loan_album_id smallint not null, foreign key(loan_album_id) references album(album_id),
@@ -145,3 +145,5 @@ insert into loan_procedure values(11, 16, 12, "2023-03-08", "2023-03-29");
 insert into loan_procedure values(12, 12, 11, "2023-03-10", "2023-03-31");
 insert into loan_procedure values(13, 11, 11, "2023-03-11", "2023-04-01");
 insert into loan_procedure values(14, 2, 9, "2023-03-13", "2023-04-03");
+
+-- 
