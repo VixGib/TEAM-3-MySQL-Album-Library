@@ -145,4 +145,4 @@ insert into loan_procedure values(11, 16, 12, "2023-03-08", "2023-03-29");
 insert into loan_procedure values(12, 12, 11, "2023-03-10", "2023-03-31");
 insert into loan_procedure values(13, 11, 11, "2023-03-11", "2023-04-01");
 insert into loan_procedure values(14, 2, 9, "2023-03-13", "2023-04-03");
-
+cd 
