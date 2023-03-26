@@ -16,12 +16,16 @@ select due_back_date, album_name, first_name, last_name from loan_procedure join
 -- look up due date of loans by first_name and last_name
 select due_back_date, album_name, first_name, last_name from loan_procedure join album on album_id = loan_album_id join customer on cust_id = loan_cust_id where first_name = "Vicki" and last_name = "Gibbison";
 
--- borrow an album
+-- borrow an album (using album name instead of album id)
 insert into loan_procedure (loan_album_id, loan_cust_id, issue_date, due_back_date) 
 select album_id, 3, "2023-03-24", "2023-04-14" from album where album_name = "Working my way back to you";
 
 insert into loan_procedure (loan_album_id, loan_cust_id, issue_date, due_back_date) 
 select album_id, 3, "2023-03-24", "2023-04-14" from album where album_name = "Gold Rush Kid";
+
+-- borrow an album using album name and customer name
+insert into loan_procedure (loan_album_id, loan_cust_id, issue_date, due_back_date) 
+select album_id, cust_id, "2023-03-26", "2023-04-16" from album, customer where album_name = "Fun House" and first_name = "Carl" and last_name = "Brooks";
 
 -- user story for library staff
 -- add a new member to the library
@@ -51,3 +55,5 @@ update loan_procedure set due_back_date = "23-04-14" where loan_id = 7;
 
 -- delete a customer... we can't delete a customer that has ever borrowed anything without deleting loan history.
 -- suggestion... have a membership active column on customer table and rather than deleting a customer we can disactivate their membership
+
+
