@@ -40,6 +40,7 @@ delete from loan_procedure where loan_cust_id = 6;
 -- Delete a customer
 delete from customer where cust_id = 10;
 
+
 -- stored procedure
 
 delimiter //
@@ -51,15 +52,23 @@ end //
 
 call SeeCustomers;
 
--- search loan procdure buy foirst and last name
+
+-- search loan procdure buy first and last name
 delemiter //
 create procedure SearchLoanByFirstAndLastName(
 in FirstName varchar(70), LastName varchar(70))
 begin
 select * from loan_procedure join album on album_id = loan_album_id join customer on cust_id = loan_cust_id where first_name = FirstName and last_name = LastName ;
 end //
+delimiter;
 
 call SearchLoanByFirstAndLastName("Phil", "Brown");
+
+-- search for loan procedure by due back date
+
+
+
+
 
 -- SP for searching by nationality
 delimiter //
@@ -69,6 +78,7 @@ begin
 select * from artist where nationality = Nationality;
 end //
 delimiter ;
+
 
 
 call SearchByNationality("English");
@@ -84,4 +94,28 @@ delimiter ;
 
 call SearchByPostcodeArea("WF");
 call SearchByPostcodeArea("LS");
+
+-- create customer local host and privilages
+create user customer@localhost identified by 'password';
+grant select on Library.album to customer@localhost;
+grant select on Library.artist to customer@localhost;
+grant select on Library.genre to customer@localhost;
+grant select on Library.record_label to customer@localhost;
+grant select on Library.loan_procedure to customer@localhost;
+grant insert on Library.loan_procedure to customer@localhost;
+
+
+-- create customer local host and privilages
+create user staff@localhost identified by 'password';
+grant select on Library.* to staff@localhost;
+
+grant insert on Library.* to staff@localhost;
+
+grant update on Library.* to staff@localhost;
+
+
+
+
+
+
 
