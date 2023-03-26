@@ -40,7 +40,30 @@ delete from loan_procedure where loan_cust_id = 6;
 -- Delete a customer
 delete from customer where cust_id = 10;
 -- stored procedure
-call Library.`Search customer id`();
+
+delimiter //
+
+create procedure SeeCustomers()
+begin
+select * from customer;
+end //
+
+call SeeCustomers;
+
+delemiter //
+create procedure SearchLoanByFirstAndLastName(
+in FirstName varchar(70), LastName varchar(70))
+begin
+select * from loan_procedure join album on album_id = loan_album_id join customer on cust_id = loan_cust_id where first_name = FirstName and last_name = LastName ;
+end //
+
+call SearchLoanByFirstAndLastName("Phil", "Brown");
+
+ 
+
+
+
+
 
 
 
