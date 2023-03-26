@@ -39,6 +39,7 @@ update loan_procedure set due_back_date = "2023-04-29" where loan_cust_id = 6;
 delete from loan_procedure where loan_cust_id = 6;
 -- Delete a customer
 delete from customer where cust_id = 10;
+
 -- stored procedure
 
 delimiter //
@@ -50,6 +51,7 @@ end //
 
 call SeeCustomers;
 
+-- search loan procdure buy foirst and last name
 delemiter //
 create procedure SearchLoanByFirstAndLastName(
 in FirstName varchar(70), LastName varchar(70))
@@ -59,14 +61,27 @@ end //
 
 call SearchLoanByFirstAndLastName("Phil", "Brown");
 
- 
+-- SP for searching by nationality
+delimiter //
+create procedure SearchByNationality(
+in Nationality varchar(70) )
+begin 
+select * from artist where nationality = Nationality;
+end //
+delimiter ;
 
 
+call SearchByNationality("English");
 
+-- SP for searching by Postcode Area
+delimiter //
+create procedure SearchByPostcodeArea(
+in AreaCode varchar(4) )
+begin 
+select * from customer where postcode like concat(AreaCode,'%');
+end //
+delimiter ;
 
-
-
-
-
-
+call SearchByPostcodeArea("WF");
+call SearchByPostcodeArea("LS");
 
