@@ -77,8 +77,8 @@ in Customer_name varchar(30), Album_name varchar(70) )
 begin
 insert into loan_procedure(issue_date, due_back_date, loan_cust_id, loan_album_id) 
 values (curdate(), (curdate() + interval 3 week), 
-(select cust_id from customer where Customer_name = concat(customer.first_name, " ", customer.last_name)),
-(select album_id from album where Album_name = album_name));
+(select cust_id from customer where Customer_name = concat(customer.first_name, " ", customer.last_name) limit 1),
+(select album_id from album where Album_name = album_name limit 1) );
 end //
 
 -- select cust_id from customer where "Vicki Gibbison" = concat(customer.first_name, " ", customer.last_name)
@@ -101,6 +101,8 @@ call spLibrarian_loans_check();
 delimiter ;
 call spCustomer_loan_album("John Barnes", "Anti");
 
+select * from loan_procedure;
+
 delimiter ;
 call spAlbum_search("True love");
 
@@ -114,4 +116,8 @@ insert into loan_procedure values(17, 19, 6, "2023-03-26", "2023-04-16");
 delimiter ;
 call spCustomer_check_due("Vicki", "Gibbison");
 
-select * from album order by album_name
+delimiter ;
+call spCustomer_artist_browse()
+
+delimiter ;
+call spCustomer_genre_browse()
