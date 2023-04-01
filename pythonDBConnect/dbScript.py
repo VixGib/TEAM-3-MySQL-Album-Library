@@ -46,34 +46,96 @@ print('******parameterised query ********')
 #     )
 #     for row in result:
 #         print(f"First Name: {row.first_name}  Last Name: {row.last_name}")
-
-name = input("What customer would you like? ")
-with engine.connect() as conn:
-    result = conn.execute(
-        text("SELECT first_name, last_name, email, mobile_num FROM customer WHERE first_name = :param"),
-        {"param": name}
-    )
-    for row in result:
-        print(f"First Name: {row.first_name}  Last Name: {row.last_name} \nEmail: {row.email} \nTel no: {row.mobile_num} \n")
+#
+# name = input("What customer would you like? ")
+# with engine.connect() as conn:
+#     result = conn.execute(
+#         text("SELECT first_name, last_name, email, mobile_num, join_date FROM customer WHERE first_name = :param"),
+#         {"param": name}
+#     )
+#     for row in result:
+#         print(f"First Name: {row.first_name}  Last Name: {row.last_name} \nEmail: {row.email} \nTel no: {row.mobile_num} \nJoin date: {row.join_date}\n")
 
 
 # print('************* join *********')
-# fname = input("What first name employee would you like? ")
-# lname = input("What last name employee would you like? ")
+# fname = input("What is the customer's first name? ")
+# lname = input("What is the customer's last name? ")
 #
 # with engine.connect() as conn:
 #     result = conn.execute(
-#         text("""select e.first_name emp_fname, e.last_name emp_lname, e.dep_id, e.dep_name, e.emp_role, m.first_name , m.last_name
-#         from employee e inner join manager m
-#         on e.manager_id= m.man_id where e.first_name = :fname and e.last_name= :lname"""),
+#         text("""select c.first_name cust_fname, c.last_name cust_lname, c.cust_id, l.loan_album_id, l.due_back_date
+#         from customer c inner join loan_procedure l
+#         on c.cust_id= l.loan_cust_id where c.first_name = :fname and c.last_name= :lname"""),
 #         {"fname": fname, "lname" : lname}
 #     )
 #     for row in result:
-#         print(f"First Name: {row.emp_fname}  Last Name: {row.emp_lname} Dep Id: {row.dep_id} Role: {row.emp_role} Manager: {row.first_name + row.last_name}")
-
+#         print(f"First Name: {row.cust_fname}  Last Name: {row.cust_lname} Customer Id: {row.cust_id} Loan: {row.loan_album_id} Due back: {row.due_back_date}")
+#
 
 # with engine.connect() as conn:
 #     result = conn.execute(
-#         text("""update manager set first_name = 'Christmas' where man_id = 3""")
+#         text("""update customer set last_name = 'Brooks' where cust_id = 3""")
 #     )
 #     conn.commit()
+
+
+# search artist details
+# name = input("What is the artist's first name? ")
+#
+# with engine.connect() as conn:
+#      result = conn.execute(
+#          text("""select if(first_name=last_name, first_name, concat(first_name," ",last_name)) as artistName, nationality
+#          from artist where first_name = :param"""),
+#          {"param": name}
+#      )
+#
+# for row in result:
+#     print(f"Artist Name: {row.artistName}  \nNationality: {row.nationality} \n")
+
+
+# search artist details by initial
+# initial = input("What is the artist's first initial? ")
+#
+# with engine.connect() as conn:
+#      result = conn.execute(
+#          text("""select if(first_name=last_name, first_name, concat(first_name," ",last_name)) as artistName, nationality
+#          from artist where first_name like concat(:param, '%')"""),
+#          {"param": initial}
+#      )
+#
+# for row in result:
+#     print(f"Artist Name: {row.artistName}      Nationality: {row.nationality}")
+
+
+# search all artists of one nationality
+# nat = input("What nationality would you like to browse? ")
+#
+# with engine.connect() as conn:
+#      result = conn.execute(
+#          text("""select if(first_name=last_name, first_name, concat(first_name," ",last_name)) as artistName, nationality
+#          from artist where nationality = :param"""),
+#          {"param": nat}
+#      )
+# print(f"Here is a list of {nat} artists:")
+# for row in result:
+#     print(f"{row.artistName}")
+
+# browse by label (join)
+# label = input("What record label would you like to browse? ")
+#
+# with engine.connect() as conn:
+#     result = conn.execute(
+#         text("""select a.album_name, r.label_name
+#          from album a inner join record_label r on a.record_label_id=r.rec_id where r.label_name = :param"""),
+#         {"param": label}
+#     )
+# print(f"Here is a list of albums on the {label} label:")
+# for row in result:
+#     print(f"{row.album_name}")
+
+# insert a new album
+with engine.connect() as conn:
+    result = conn.execute(
+        text("""insert into album (album_name, artist_id, album_genre_id, record_label_id, album_year) values ("Nobody Else", 8, 1, 7, 1995)""")
+    )
+    conn.commit()

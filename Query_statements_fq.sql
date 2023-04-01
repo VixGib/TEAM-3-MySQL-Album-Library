@@ -3,6 +3,8 @@ use Library;
 -- look up all American artists
 select first_name, last_name from artist where nationality = 'American';
 
+select album_name from album where record_label_id=1;
+
 -- look up albums from before 1980
 select album_name, first_name, last_name from album join artist on artist_id=art_id where album_year < 1980;
 

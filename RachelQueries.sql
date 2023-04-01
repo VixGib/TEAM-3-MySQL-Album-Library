@@ -27,7 +27,8 @@ begin
 select genre_name as Genre, if(first_name = last_name, last_name, concat(first_name, " ", last_name)) as Artist, album_name as Album  
 from artist join album on art_id = artist_id join genre on genre_id = album_genre_id order by Genre;
 end //
-
+delimiter ;
+call spCustomer_genre_browse();
 -- member search for a chosen album
 delimiter //
 create procedure spAlbum_search(
