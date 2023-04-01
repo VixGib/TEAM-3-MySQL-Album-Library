@@ -1,6 +1,6 @@
 from application import db
 from dataclasses import dataclass
-
+@dataclass
 # ORM - Object relational mapping - mapping class to a table
 # DTO - data transfer object
 class Loan_procedure(db.Model):

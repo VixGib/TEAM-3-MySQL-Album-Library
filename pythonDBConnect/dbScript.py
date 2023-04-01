@@ -134,8 +134,14 @@ print('******parameterised query ********')
 #     print(f"{row.album_name}")
 
 # insert a new album
-with engine.connect() as conn:
-    result = conn.execute(
-        text("""insert into album (album_name, artist_id, album_genre_id, record_label_id, album_year) values ("Nobody Else", 8, 1, 7, 1995)""")
-    )
-    conn.commit()
+# with engine.connect() as conn:
+#     result = conn.execute(
+#         text("""insert into album (album_name, artist_id, album_genre_id, record_label_id, album_year) values ("Nobody Else", 8, 1, 7, 1995)""")
+#     )
+#     conn.commit()
+
+# with engine.connect() as conn:
+#     result = conn.execute(
+#         text("""delete from album where album_id=23""")
+#     )
+#     conn.commit()
