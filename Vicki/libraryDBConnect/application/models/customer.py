@@ -10,9 +10,9 @@ from dataclasses import dataclass
 #     last_name = db.Column(db.String(50), nullable=False)
 #     employees = db.relationship('Employee', backref='employees')
 
-
+@dataclass
 class Customer(db.Model):
-    cust_id = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
+    cust_id = db.Column(db.Integer, primary_key=True, nullable=False)
     first_name = db.Column(db.String(70), nullable=False)
     last_name = db.Column(db.String(70), nullable=False)
     email = db.Column(db.String(70), nullable=False)
@@ -20,4 +20,4 @@ class Customer(db.Model):
     address = db.Column(db.String(150), nullable=True)
     postcode = db.Column(db.String(8), nullable=True)
     join_date = db.Column(db.Date, nullable=True)
-    loans = db.relationship('loan_procedure', backref='loans')
+    loans = db.relationship('Loan_procedure', backref='loans')

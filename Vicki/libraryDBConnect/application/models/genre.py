@@ -13,4 +13,4 @@ from dataclasses import dataclass
 class Genre(db.Model):
     genre_id = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True)
     genre_name = db.Column(db.String, nullable=False)
-    albums = db.relationship('Album', backref='albums')
+    albumsG = db.relationship('Album', backref='albumsG')
