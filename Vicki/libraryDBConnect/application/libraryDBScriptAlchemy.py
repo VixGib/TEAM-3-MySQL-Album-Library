@@ -62,6 +62,18 @@ session = Session()
 # for e in artist.albumsA:
 #     print(e.album_name)
 
+# # SEARCH FOR ALL ALBUMS BY ONE ARTIST USING FIRST NAME
+# artists = session.query(Artist).filter_by(first_name="George").all()
+# print("The albums by", artists[0].first_name, artists[0].last_name, "are:")
+# for e in artists[0].albumsA:
+#     print(e.album_name)
+
+# #SEARCH FOR ALL ALBUMS FROM A PARTICULAR YEAR
+# albums = session.query(Album).filter_by(album_year="1995").all()
+# print("The albums from", albums[0].album_year, "are:")
+# for e in albums:
+#     print(e.album_name)
+
 
 ## SEARCH GENRE FOR ALL POP ALBUMS AND RETURN HOW MANY ALBUMS, THE ALBUM NAME, YEAR AND ARTIST NAME
 # genre = session.query(Genre).filter_by(genre_name="Pop").first()
@@ -75,10 +87,10 @@ session = Session()
 #         print("Artist:", artist.first_name, artist.last_name, "\n")
 
 
-# SEARCH FOR ALL ALBUMS BY AMERICAN ARTISTS
-# artist = session.query(Artist).filter_by(nationality="American").all()
-# print("There are", len(artist), "Artists")
-# for e in artist:
+# USER STORY 1 SEARCH FOR ALL ALBUMS BY AMERICAN ARTISTS
+# artists = session.query(Artist).filter_by(nationality="American").all()
+# print("There are", len(artists), artists[0].nationality, "Artists")
+# for e in artists:
 #     if e.first_name == e.last_name:
 #         print("\nArtist:", e.first_name)
 #     else:

@@ -140,7 +140,7 @@ engine = get_connection()
 #
 #     for row in result:
 #         print(f"""Loan ref: {row.loan_id} \nIssue date: {row.issue_date} \nCustomer Name: {row.cust_first_name} {row.cust_last_name} \nAlbum: {row.album_name}""")
-#
+
 # NOT WORKING TRYING TO ADD ARTIST, RECORD LABEL AND ALBUM IN 1
 # with engine.connect() as conn:
 #     result = conn.execute(
