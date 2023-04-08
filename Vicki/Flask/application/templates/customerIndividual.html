@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +7,11 @@
 </head>
 <body>
 <div>
-{% for cust in customers %}
-   <p>{{cust.cust_id}} {{cust.first_name}} {{cust.last_name}} {{cust.email}} {{cust.mobile_num}} {{cust.address}} {{cust.postcode}} {{cust.join_date}}</p>
-{% endfor %}
+{% if cust_id > 0 %}
+   <p>{{customer.cust_id}} {{customer.first_name}} {{customer.last_name}} {{customer.email}} {{customer.mobile_num}} {{customer.address}} {{customer.postcode}} {{customer.join_date}}</p>
+{% endif %}
     <br>
     {{ message }}
 </div>
 </body>
 </html>
-
