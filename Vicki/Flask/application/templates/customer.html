@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div>
+{% for cust in customers %}
+   <p>{{cust.cust_id}} {{cust.first_name}} {{cust.last_name}} {{cust.email}} {{cust.mobile_num}} {{cust.address}} {{cust.postcode}} {{cust.join_date}}</p>
+{% endfor %}
+    <br>
+    {{ message }}
+</div>
+</body>
+</html>
+

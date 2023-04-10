@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div>
+{% if cust_id > 0 %}
+   <p>{{customer.cust_id}} {{customer.first_name}} {{customer.last_name}} {{customer.email}} {{customer.mobile_num}} {{customer.address}} {{customer.postcode}} {{customer.join_date}}</p>
+{% endif %}
+    <br>
+    {{ message }}
+</div>
+</body>
+</html>

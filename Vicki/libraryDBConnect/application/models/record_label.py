@@ -14,4 +14,4 @@ from dataclasses import dataclass
 class Record_label(db.Model):
     rec_id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     label_name = db.Column(db.String(70), nullable=False)
-    albums = db.relationship('Album', backref='albums')
+    albumsR = db.relationship('Album', backref='albumsR')
