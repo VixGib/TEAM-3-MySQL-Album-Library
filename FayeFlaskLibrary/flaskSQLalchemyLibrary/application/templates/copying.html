@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Id: {{customer.cust_id}} </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div>
+{% if last_name|length>0 %}
+   <p>{{customer.first_name}} {{customer.last_name}}</p>
+{% endif %}
+    <br>
+    {{ message }}
+</div>
+
+<div>
+    {% for loan in customer.loans %}
+
+    <ul>
+        <li>Loan id: {{loan.loan_id}}  Album id: {{album.album_name}}  Issue date:{{loan.issue_date}}   Due back:{{loan.due_back_date}}</li>
+    </ul>
+{% endfor %}
+</div>
+
+
+
+
+</body>
+</html>

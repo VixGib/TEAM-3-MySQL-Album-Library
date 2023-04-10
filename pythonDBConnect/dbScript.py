@@ -140,6 +140,7 @@ print('******parameterised query ********')
 #     )
 #     conn.commit()
 
+# delete an album
 # with engine.connect() as conn:
 #     result = conn.execute(
 #         text("""delete from album where album_id=23""")
