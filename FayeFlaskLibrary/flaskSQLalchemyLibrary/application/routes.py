@@ -15,7 +15,7 @@ def show_customers():
     customers = service.get_all_customers()
     if len(customers) == 0:
         error = "There are no employees to display"
-    return render_template('customer.html', customers=customers, message=error)
+    return render_template('customer.html', customers=customers, message=error, title="All Customer Information")
     # return jsonify(customers)
 
 # this is a ReST endpoint - only returns data
@@ -29,7 +29,7 @@ def show_customer(cust_id):
     else:
         print(customer.first_name, customer.last_name)
     # return jsonify(customer)
-    return render_template('customerIndividual.html', customer=customer, cust_id=cust_id, message=error)
+    return render_template('customerIndividual.html', customer=customer, cust_id=cust_id, message=error, title="Customer Information")
 
 # shows the details of just one album
 @app.route('/album/<int:album_id>', methods=['GET'])
@@ -80,7 +80,6 @@ def get_artist(art_id):
 def get_customer_by_last_name(last_name):
     error = ""
     album_names =[]
-    count = 0
     customer = service.get_customer_by_last_name(last_name)
     if not customer:
         error = "There is no customer with surname: " + str(last_name)
@@ -88,6 +87,42 @@ def get_customer_by_last_name(last_name):
         for l in customer.loans:
             album = service.get_album_by_id(l.loan_album_id)
             album_names.append(album.album_name)
-            count += 1
     return render_template('customer_loan_history.html', album_names=album_names, customer=customer, last_name=last_name, message=error)
     # return jsonify(customer)
+
+# SEARCH GENRE BY NAME AND RETURN ALL ALBUMS
+@app.route('/genre/<genre_name>', methods=['GET'])
+def get_genre(genre_name):
+    error = ""
+    artist_first_names=[]
+    artist_last_names=[]
+    genre = service.get_genre_by_genre_name(genre_name)
+    if not genre:
+        error = "There is no genre with this name:" + str(genre_name)
+    else:
+        for a in genre.albumsG:
+            artist = service.get_artist_by_id(a.artist_id)
+            artist_first_names.append(artist.first_name)
+            artist_last_names.append(artist.last_name)
+    return render_template('genre.html', artist_first_names=artist_first_names, artist_last_names=artist_last_names, genre=genre, genre_name=genre_name, artist=Artist, message=error, title="Albums by Genre")
+    # return jsonify(genre)
+
+# ALL ARTISTS
+@app.route('/artists', methods=['GET'])
+def show_artists():
+    error = ""
+    artists = service.get_all_artists()
+    if len(artists) == 0:
+        error = "There are no artist's to display"
+    return render_template('allArtists.html', artists=artists, message=error, title="All Artists")
+    # return jsonify(artists)
+
+# ALL LOANS
+@app.route('/loans', methods=['GET'])
+def show_loans():
+    error = ""
+    loans = service.get_all_loans()
+    if len(loans) == 0:
+        error = "There are no loans to display"
+    return render_template('loan_procedure.html', loans=loans, customer=Customer, loan_cust_id=Customer.cust_id, message=error, title="All loans")
+    # return jsonify(loans)

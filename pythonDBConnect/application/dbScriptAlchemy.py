@@ -34,13 +34,13 @@ session = Session()
 #     print(e.first_name, end = " ")
 #     print(e.last_name)
 
-customer = session.query(Customer).filter_by(first_name="Bobby").first()
-print(customer.first_name, customer.last_name, customer.cust_id)
-for e in customer.loans:
-    album = session.query(Album).filter_by(album_id=e.loan_album_id).first()
-    print(album.album_name)
-    print("Issue date: ", e.issue_date, end = " ")
-    print("Due back date: ", e.due_back_date)
+# customer = session.query(Customer).filter_by(first_name="Bobby").first()
+# print(customer.first_name, customer.last_name, customer.cust_id)
+# for e in customer.loans:
+#     album = session.query(Album).filter_by(album_id=e.loan_album_id).first()
+#     print(album.album_name)
+#     print("Issue date: ", e.issue_date, end = " ")
+#     print("Due back date: ", e.due_back_date)
 #
 # genre = session.query(Genre).filter_by(genre_name="Pop").first()
 # print(len(genre.albumsG), genre.genre_name, "albums:")
@@ -67,4 +67,8 @@ for e in customer.loans:
 # # customer object
 # customer = Customer(first_name="David", last_name="Beckham", email="davidbeckham@email.com", mobile_num="07898654234", address="3 Mansion Lane", postcode="CA3 1DD", join_date="2014-06-07")
 # session.add(customer)
+# session.commit()
+
+# DELETE A GENRE BY ID
+# session.query(Genre).filter_by(genre_id=16).delete()
 # session.commit()

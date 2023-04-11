@@ -43,3 +43,19 @@ def get_album_by_id(album_id):
         return album
     else:
         return None
+
+# SEARCH GENRE BY NAME AND RETURN ALL ALBUMS
+def get_genre_by_genre_name(genre_name):
+    if len(genre_name) > 0:
+        genre = db.session.query(Genre).filter_by(genre_name=genre_name).first()
+        return genre
+    else:
+        return None
+
+# ALL ARTISTS
+def get_all_artists():
+    return db.session.query(Artist).all()
+
+# ALL LOANS
+def get_all_loans():
+    return db.session.query(Loan_procedure).all()

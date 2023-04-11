@@ -28,3 +28,9 @@
 
 </body>
 </html>
+
+            <td>{% if artist_first_names[{{loop.index0}}]==artist_last_names[{{loop.index0}}]%}
+                {{artist_first_names[{{loop.index0}}]}}
+                {% else %}
+                {{artist_first_names[{{loop.index0}}]}}{{artist_last_names[{{loop.index0}}]}}
+                {% endif %}
