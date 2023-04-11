@@ -3,16 +3,26 @@
 <h3>Artist and Album Details</h3>
 <p>{{artist.first_name}} {{artist.last_name}}</p>
 <div class="error_message">{{message}}</div>
-<div>
-    {% for alb in artist.albumsA %}
-    <ul>
-        <li>Album Name: {{alb.album_name}} Album Year: {{alb.album_year}} Album id: {{alb.album_id}}  </li>
-    </ul>
-{% endfor %}
+    <div>
+    <table>
+       <tr>
+           <th>Album Name</th>
+           <th>Album Year</th>
+           <th>Album ID</th>
+       </tr>
+        {% for alb in artist.albumsA %}
+        <tr>
+           <td>{{alb.album_name}}</td>
+            <td>{{alb.album_year}}</td>
+            <td>{{alb.album_id}}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </div>
+
 {% endblock %}
 {% block footer_content %}
 <footer>
-     &copy; 2023
+     &copy; 2023 Team 3
 </footer>
 {% endblock %}

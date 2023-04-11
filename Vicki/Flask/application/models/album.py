@@ -2,7 +2,7 @@ from application import db
 from dataclasses import dataclass
 
 
-#
+
 # # ORM - Object relational mapping - mapping class to a table
 # # DTO - data transfer object
 @dataclass
@@ -21,3 +21,4 @@ class Album(db.Model):
     album_genre_id = db.Column(db.Integer, db.ForeignKey('genre.genre_id'), nullable=False)
     record_label_id = db.Column(db.Integer, db.ForeignKey('record_label.rec_id'), nullable=True)
     album_year = db.Column(db.String, nullable=True)
+    albumloan = db.relationship('LoanProcedure', backref='albumloan')

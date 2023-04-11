@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "layout.html" %}
+{% block body_content %}
+<h3>There are {{genre.albumsG|length}} Albums in Genre {{genre.genre_name}}:</h3>
+<div class="error_message">{{message}}</div>
+<div>
+    <table>
+       <tr>
+           <th>Album Name</th>
+           <th>Artist Name</th>
+           <th>Album Year</th>
+       </tr>
+        {% for alb in genre.albumsG %}
+        <tr>
+           <td>{{alb.album_name}}</td>
+            <td>{% if artist_first_names[loop.index0] == artist_last_names[loop.index0]%}
+                {{artist_first_names[loop.index0]}}
+                {% else %}
+    {{artist_first_names[loop.index0]}} {{artist_last_names[loop.index0]}}
+    {% endif %}</td>
+            <td>{{alb.album_year}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+{% block footer_content %}
+<footer>
+     &copy; 2023 Team 3
+</footer>
+{% endblock %}

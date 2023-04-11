@@ -12,6 +12,7 @@ class Customer(db.Model):
     last_name: str
     email: str
     mobile_num: str
+    address: str
     postcode: str
     join_date: str
 
@@ -23,7 +24,7 @@ class Customer(db.Model):
     address = db.Column(db.String(150), nullable=True)
     postcode = db.Column(db.String(8), nullable=True)
     join_date = db.Column(db.Date, nullable=True)
-    # loans = db.relationship('loan_procedure', backref='loans')
+    loans = db.relationship('LoanProcedure', backref='loans')
 
     # which attributes are included in the JSON that I'm sending back
     # emp_id: int

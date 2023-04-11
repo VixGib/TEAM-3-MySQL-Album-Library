@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block body_content %}
+<h2>Loan Details</h2>
+
+<div class="error_message">{{message}}</div>
+<div>
+    <table>
+       <tr>
+           <th>Loan ID</th>
+           <th>Customer ID</th>
+           <th>Issue Date</th>
+           <th>Due Back Date</th>
+
+       </tr>
+        {% for loan in loans %}
+        <tr>
+           <td>{{loan.loan_id}}</td>
+            <td><a href="http://127.0.0.1:5000/customers/{{loan.loan_cust_id}}" >{{loan.loan_cust_id}}</a></td>
+            <td>{{loan.issue_date}}</td>
+            <td>{{loan.due_back_date}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
+{% block footer_content %}
+<footer>
+     &copy; 2023 Team 3
+</footer>
+{% endblock %}
+
+

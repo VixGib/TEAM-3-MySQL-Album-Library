@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block body_content %}
+<h2>Artist's Details</h2>
+<div class="error_message">{{message}}</div>
+
+<div>
+    <table>
+        <tr>
+            <th> Artist ID </th>
+            <th> Artist Name </th>
+            <th> Nationality </th>
+        </tr>
+
+    {% for art in artists %}
+        <tr>
+     <td><a href="http://127.0.0.1:5000/artists/{{art.art_id}}" >
+
+    {% if art.first_name == art.last_name %}
+   {{art.first_name}}
+    {% else %}
+    {{art.first_name}} {{art.last_name}}
+    {% endif %}</a></td>
+            <td>{{art.nationality}}</td>
+            </tr>
+{% endfor %}
+</table>
+    <br>
+    {{ message }}
+</div>
+{% endblock %}
+{% block footer_content %}
+<footer>
+     &copy; 2023 Team 3
+</footer>
+{% endblock %}
